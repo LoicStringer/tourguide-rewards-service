@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tourguiderewardsservice.exception.RewardCentralException;
 import com.tourguiderewardsservice.service.RewardsService;
 
 @RestController
@@ -18,7 +19,7 @@ public class RewardsServiceController {
 
 	@GetMapping("{userId}/attractions/{attractionId}/reward-points")
 	public ResponseEntity<Integer> getAttractionRewardPoints
-	(@PathVariable("userId")UUID userId,@PathVariable("attractionId") UUID attractionId) {
+	(@PathVariable("userId")UUID userId,@PathVariable("attractionId") UUID attractionId) throws RewardCentralException {
 		return ResponseEntity.ok(rewardsService.getAttractionRewardPoints(attractionId, userId));
 	}
 
