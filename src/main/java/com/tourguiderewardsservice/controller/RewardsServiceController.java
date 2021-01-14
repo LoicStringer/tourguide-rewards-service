@@ -17,7 +17,7 @@ public class RewardsServiceController {
 	@Autowired
 	private RewardsService rewardsService;
 
-	@GetMapping("{userId}/attractions/{attractionId}/reward-points")
+	@GetMapping("/{userId}/attractions/{attractionId}/reward-points")
 	public ResponseEntity<Integer> getAttractionRewardPoints
 	(@PathVariable("userId")UUID userId,@PathVariable("attractionId") UUID attractionId) throws RewardCentralException {
 		return ResponseEntity.ok(rewardsService.getAttractionRewardPoints(attractionId, userId));
