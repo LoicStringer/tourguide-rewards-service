@@ -33,6 +33,7 @@ class RewardsServiceTestIT {
 	@Test
 	void getAttractionRewardPointsIntegrationTest() throws Exception {
 		when(rewardCentralProxyImpl.getAttractionRewardPoints(any(UUID.class), any(UUID.class))).thenReturn(100);
+		
 		mockMvc.perform(get("/"+UUID.randomUUID()+"/attractions/"+UUID.randomUUID()+"/reward-points"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$").value(100));
@@ -41,6 +42,7 @@ class RewardsServiceTestIT {
 	@Test
 	void isExpectedExceptionIsThrownWhenRewardCentralReturnsNull() throws Exception {
 		when(rewardCentralProxyImpl.getAttractionRewardPoints(any(UUID.class), any(UUID.class))).thenThrow(RewardCentralException.class);
+		
 		mockMvc.perform(get("/"+UUID.randomUUID()+"/attractions/"+UUID.randomUUID()+"/reward-points"))
 		.andExpect(status().isNotFound())
 		.andExpect(result->assertTrue(result.getResolvedException() instanceof RewardCentralException));
