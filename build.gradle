@@ -12,14 +12,24 @@ sourceCompatibility = '14'
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile files('libs/RewardCentral.jar')
 }
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback'
+    }
+}
+
 
 jacoco {
     toolVersion = "0.8.5"
