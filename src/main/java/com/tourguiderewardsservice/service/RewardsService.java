@@ -10,7 +10,7 @@ import com.tourguiderewardsservice.proxy.RewardCentralProxyImpl;
 
 @Service
 public class RewardsService {
-
+	
 	@Autowired
 	private RewardCentralProxyImpl rewardCentralProxyImpl;
 	
