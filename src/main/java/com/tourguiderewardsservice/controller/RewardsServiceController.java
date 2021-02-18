@@ -23,7 +23,7 @@ public class RewardsServiceController {
 
 	@GetMapping("/{userId}/attractions/{attractionId}/reward-points")
 	public ResponseEntity<Integer> getAttractionRewardPoints
-	(@PathVariable("userId")UUID userId,@PathVariable("attractionId") UUID attractionId) throws RewardCentralException {
+	(@PathVariable UUID userId, @PathVariable UUID attractionId) throws RewardCentralException {
 		log.info("Querying Reward Central external library to get reward points corresponding to the attraction "+attractionId);
 		return ResponseEntity.ok(rewardsService.getAttractionRewardPoints(attractionId, userId));
 	}
